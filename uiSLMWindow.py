@@ -89,8 +89,9 @@ class SLMWindow(QtGui.QMainWindow, uiMainWindow.Ui_MainWindow):
 			if not (self.SLM.windowState() & QtCore.Qt.WindowFullScreen):
 				# if we're already full screen, don't update geometry
 				#TODO: this prevents switching fullscreen between displays directly
-				self.SLM.setGeometry(geom)
-				self.SLM.showFullScreen()
+				#self.SLM.setGeometry(geom)
+				#self.SLM.showFullScreen()
+				pass
 		else:
 			size = (self.settings.window['size']/2)*2
 			self.SLM.setGeometry(self.settings.window['xpos'],
@@ -135,7 +136,7 @@ class SLMWindow(QtGui.QMainWindow, uiMainWindow.Ui_MainWindow):
 		self.winXPos.setEnabled(not state)
 		self.winYPos.setEnabled(not state)
 		self.winSize.setEnabled(not state)
-		self.winFullscreen.setEnabled(state)
+		self.winScreenID.setEnabled(state)
 		self.updatePhaseMap()
 
 	@QtCore.pyqtSlot('int')
