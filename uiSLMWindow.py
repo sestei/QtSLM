@@ -64,7 +64,7 @@ class SLMWindow(QtGui.QMainWindow, uiMainWindow.Ui_MainWindow):
 					continue # we already had this, above
 				if self.settings.LG[row][col] == 0.0:
 					continue # nothing to calculate here
-				p_lg_add = gp.gen_lg_pattern(row, col, aux_mat,
+				p_lg_add = gp.gen_lg_pattern(col, row, aux_mat,
 										  	 self.settings.window['scale'])
 				p_lg += p_lg_add * self.settings.LG[row][col]
 		
