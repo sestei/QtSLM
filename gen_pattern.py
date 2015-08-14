@@ -10,7 +10,7 @@ def theta(x):
 	"""
 	return (np.sign(x)+1) * 0.5
 
-def create_beziermap(P1, P2):
+def create_beziermap(P1, P2, imin, imax):
 	"""
 	Creates a four-point bezier curve starting at 0 and ending at 1,
 	with control points P1 at 1/3 and P2 at 2/3, for use as an
@@ -20,7 +20,7 @@ def create_beziermap(P1, P2):
 	b = 3*P2 - 6*P1
 	c = 3*P1
 
-	return lambda t: a*t**3 + b*t**2 + c*t
+	return lambda t: np.minimum(imax, np.maximum(imin, a*t**3 + b*t**2 + c*t))
 
 def phasemap(phase, intensitymap = None):
 	"""

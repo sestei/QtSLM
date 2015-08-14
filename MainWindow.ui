@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>538</width>
-    <height>479</height>
+    <height>531</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -117,26 +117,10 @@
                </property>
               </widget>
              </item>
-             <item row="4" column="1">
-              <widget class="QLineEdit" name="winScale">
-               <property name="sizePolicy">
-                <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                 <horstretch>0</horstretch>
-                 <verstretch>0</verstretch>
-                </sizepolicy>
-               </property>
-               <property name="text">
-                <string>4</string>
-               </property>
-              </widget>
-             </item>
              <item row="4" column="0">
               <widget class="QLabel" name="label_4">
                <property name="text">
                 <string>Waist Scale</string>
-               </property>
-               <property name="buddy">
-                <cstring>winScale</cstring>
                </property>
               </widget>
              </item>
@@ -218,6 +202,16 @@
                </property>
                <property name="maximum">
                 <number>10000</number>
+               </property>
+              </widget>
+             </item>
+             <item row="4" column="1">
+              <widget class="QDoubleSpinBox" name="winScale">
+               <property name="decimals">
+                <number>1</number>
+               </property>
+               <property name="singleStep">
+                <double>0.100000000000000</double>
                </property>
               </widget>
              </item>
@@ -338,22 +332,6 @@
                </property>
               </widget>
              </item>
-             <item row="1" column="1">
-              <widget class="QLineEdit" name="imP1">
-               <property name="enabled">
-                <bool>false</bool>
-               </property>
-               <property name="sizePolicy">
-                <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                 <horstretch>0</horstretch>
-                 <verstretch>0</verstretch>
-                </sizepolicy>
-               </property>
-               <property name="text">
-                <string>0.005</string>
-               </property>
-              </widget>
-             </item>
              <item row="2" column="1">
               <widget class="QLineEdit" name="imP2">
                <property name="enabled">
@@ -370,10 +348,63 @@
                </property>
               </widget>
              </item>
+             <item row="1" column="1">
+              <widget class="QLineEdit" name="imP1">
+               <property name="enabled">
+                <bool>false</bool>
+               </property>
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="text">
+                <string>0.005</string>
+               </property>
+              </widget>
+             </item>
              <item row="0" column="0">
               <widget class="QCheckBox" name="imEnable">
                <property name="text">
                 <string>Enable</string>
+               </property>
+               <property name="tristate">
+                <bool>false</bool>
+               </property>
+              </widget>
+             </item>
+             <item row="3" column="0">
+              <widget class="QLabel" name="label_14">
+               <property name="text">
+                <string>min</string>
+               </property>
+              </widget>
+             </item>
+             <item row="4" column="0">
+              <widget class="QLabel" name="label_15">
+               <property name="text">
+                <string>max</string>
+               </property>
+              </widget>
+             </item>
+             <item row="3" column="1">
+              <widget class="QLineEdit" name="imMin">
+               <property name="enabled">
+                <bool>false</bool>
+               </property>
+               <property name="text">
+                <string>0</string>
+               </property>
+              </widget>
+             </item>
+             <item row="4" column="1">
+              <widget class="QLineEdit" name="imMax">
+               <property name="enabled">
+                <bool>false</bool>
+               </property>
+               <property name="text">
+                <string>255</string>
                </property>
               </widget>
              </item>
@@ -594,7 +625,6 @@
   <tabstop>winSize</tabstop>
   <tabstop>winXPos</tabstop>
   <tabstop>winYPos</tabstop>
-  <tabstop>winScale</tabstop>
   <tabstop>winXOffset</tabstop>
   <tabstop>winYOffset</tabstop>
   <tabstop>bgrEnable</tabstop>

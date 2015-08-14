@@ -24,7 +24,7 @@ class SLMWindow(QtGui.QMainWindow, uiMainWindow.Ui_MainWindow):
 		self.winSize.setText(str(self.settings.window['size']))
 		self.winXPos.setText(str(self.settings.window['xpos']))
 		self.winYPos.setText(str(self.settings.window['ypos']))
-		self.winScale.setText(str(self.settings.window['scale']))
+		self.winScale.setValue(self.settings.window['scale'])
 		self.winScreenID.setMaximum(QtGui.QApplication.desktop().screenCount()-1)
 		self.winScreenID.setValue(self.settings.window['screenid'])
 		self.winFullscreen.setCheckState(self.settings.window['fullscreen'])
@@ -36,6 +36,9 @@ class SLMWindow(QtGui.QMainWindow, uiMainWindow.Ui_MainWindow):
 		self.imEnable.setCheckState(self.settings.intensity_map['enabled'])
 		self.imP1.setText(str(self.settings.intensity_map['P1']))
 		self.imP2.setText(str(self.settings.intensity_map['P2']))
+		self.imMin.setText(str(self.settings.intensity_map['min']))
+		self.imMax.setText(str(self.settings.intensity_map['max']))
+
 
 		self.tabLG.blockSignals(True)
 		for row in range(len(self.settings.LG)):
@@ -73,7 +76,9 @@ class SLMWindow(QtGui.QMainWindow, uiMainWindow.Ui_MainWindow):
 
 		if self.settings.intensity_map['enabled']:
 			im = gp.create_beziermap(self.settings.intensity_map['P1'],
-									 self.settings.intensity_map['P2'])
+									 self.settings.intensity_map['P2'],
+									 self.settings.intensity_map['min']/255.0,
+									 self.settings.intensity_map['max']/255.0)
 			pm = gp.phasemap(p_lg, im)
 		else:
 			pm = gp.phasemap(p_lg)
@@ -173,6 +178,8 @@ class SLMWindow(QtGui.QMainWindow, uiMainWindow.Ui_MainWindow):
 		self.settings.intensity_map['enabled'] = state
 		self.imP1.setEnabled(state)
 		self.imP2.setEnabled(state)
+		self.imMin.setEnabled(state)
+		self.imMax.setEnabled(state)
 		self.updatePhaseMap()
 	
 	@QtCore.pyqtSlot()
@@ -183,6 +190,16 @@ class SLMWindow(QtGui.QMainWindow, uiMainWindow.Ui_MainWindow):
 	@QtCore.pyqtSlot()
 	def on_imP2_editingFinished(self): 
 		self.settings.intensity_map['P2'] = float(self.imP2.text())
+		self.updatePhaseMap()
+
+	@QtCore.pyqtSlot()
+	def on_imMin_editingFinished(self): 
+		self.settings.intensity_map['min'] = int(self.imMin.text())
+		self.updatePhaseMap()
+	
+	@QtCore.pyqtSlot()
+	def on_imMax_editingFinished(self): 
+		self.settings.intensity_map['max'] = int(self.imMax.text())
 		self.updatePhaseMap()
 
 	@QtCore.pyqtSlot('int', 'int')

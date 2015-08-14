@@ -20,7 +20,9 @@ class SLMSettings(object):
 		self.intensity_map = {
 			'enabled': False,
 			'P1': 0.005,
-			'P2': 0.35
+			'P2': 0.35,
+			'min': 0,
+			'max': 255
 		}
 		self.LG = [
 			[0., 0., 0., 0., 0., 0.],
